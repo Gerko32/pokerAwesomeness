@@ -9,7 +9,11 @@ public class Pair3Awesome extends Strategy {
 
 	@Override
 	public Action apply(Response r) {
-		if(r.getCommunityCards().length==0&&CardCombinations.isPairOrMore(r)==1){
+		if(CardCombinations.quantityOfPairs(r)==2&&r.getCallAmount()/getAdjustedStack(r)<0.3)
+		{
+			return new Action("raise",(int)Math.round(getAdjustedStack(r)*0.075));
+		}
+		else if(r.getCommunityCards().length==0&&CardCombinations.isPairOrMore(r)==1){
 			return new Action("raise",(int)(r.getStack()*0.01));
 		}else if(r.getCommunityCards().length==0){
 			return new Action("raise",0);
