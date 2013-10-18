@@ -8,14 +8,14 @@ public class Response {
 	private int stack;
 	private int current_bet;
 	private int call_amount;
-	private Card[] hand;
+	private String[] hand;
 	private String betting_phase;
 	private int total_players_remaining;
 	private int table_id;
 	private int round_id;
 	private Round[] round_history;
 	private String lost_at;
-	private Card[] community_cards;
+	private String[] community_cards;
 
 	public PlayersAtTable[] getPlayersAtTable() {
 		return players_at_table;
@@ -45,7 +45,7 @@ public class Response {
 		return call_amount;
 	}
 
-	public Card[] getHand() {
+	public String[] getHand() {
 		return hand;
 	}
 
@@ -73,7 +73,7 @@ public class Response {
 		return lost_at;
 	}
 
-	public Card[] getCommunityCards() {
+	public String[] getCommunityCards() {
 		return community_cards;
 	}
 
