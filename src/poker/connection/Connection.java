@@ -20,10 +20,10 @@ public class Connection {
 		this.parser=parser;
 	}
 	
-	private Response get(String arguments)
+	public Response get()
 	{
 		try{
-			URL obj = new URL(baseUrl+arguments);
+			URL obj = new URL(baseUrl);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
 			// optional default is GET
@@ -65,7 +65,7 @@ public class Connection {
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 			wr.writeBytes("action_name="+action.getAction());
 			if(!action.getAction().equals("fold")){
-				wr.writeBytes("amount="+action.getAmount());
+				wr.writeBytes("&amount="+action.getAmount());
 			}
 			wr.flush();
 			wr.close();
