@@ -8,37 +8,16 @@ import java.net.URL;
 
 
 import poker.AI.parser.JSONParser;
+import poker.AI.valueobjects.Action;
 import poker.AI.valueobjects.Response;
 
 public class Connection {
 	private static final String baseUrl="http://nolimitcodeem.com/sandbox/players/";
-	private static final String[] keys={"deal-phase-key", "flop-phase-key", "turn-phase-key", "river-phase-key"};
 	
 	private JSONParser parser;
 	
-	public Connection(JSONParser parser)
-	{
+	public Connection(JSONParser parser){
 		this.parser=parser;
-	}
-	
-	public Response dealPhase()
-	{
-		return get(keys[0]);
-	}
-	
-	public Response flopPhase()
-	{
-		return get(keys[1]);
-	}
-	
-	public Response turnPhase()
-	{
-		return get(keys[2]);
-	}
-	
-	public Response riverPhase()
-	{
-		return get(keys[3]);
 	}
 	
 	private Response get(String arguments)
@@ -70,10 +49,9 @@ public class Connection {
 		}
 	}
 	
-	public void action(String action) throws Exception {
+	public Response action(Action action) throws Exception {
 
-		try{
-			String url = baseUrl+keys[2]+"/action";
+			String url = baseUrl+"/action";
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 	 
@@ -85,11 +63,12 @@ public class Connection {
 			// Send post request
 			con.setDoOutput(true);
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-			wr.writeBytes(action);
+			wr.writeBytes("action_name="+action.getAction());
+			if(!action.getAction().equals("fold")){
+				wr.writeBytes("amount="+action.getAmount());
+			}
 			wr.flush();
 			wr.close();
-	 
-			int responseCode = con.getResponseCode();
 	 
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getInputStream()));
@@ -100,8 +79,6 @@ public class Connection {
 				response.append(inputLine);
 			}
 			in.close();
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+			return parser.parse(response.toString(), Response.class);
 	}
 }
