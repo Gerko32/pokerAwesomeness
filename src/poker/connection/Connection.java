@@ -12,7 +12,7 @@ import poker.AI.valueobjects.Action;
 import poker.AI.valueobjects.Response;
 
 public class Connection {
-	private static final String baseUrl="http://nolimitcodeem.com/sandbox/players/";
+	private static final String baseUrl="http://nolimitcodeem.com/api/players/ee15f9d5-713d-4fb9-aa5b-dd776a437d9d/";
 	
 	private JSONParser parser;
 	
@@ -51,7 +51,7 @@ public class Connection {
 	
 	public Response action(Action action) throws Exception {
 
-			String url = baseUrl+"/action";
+			String url = baseUrl+"action";
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 	 
