@@ -46,18 +46,18 @@ public class Connection {
 		try{
 			URL obj = new URL(baseUrl+arguments);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-	 
+
 			// optional default is GET
 			con.setRequestMethod("GET");
-	 
-			//add request header
+
+			// add request header
 			con.setRequestProperty("User-Agent", "Mozilla/5.0");
 	 
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getInputStream()));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
-	 
+
 			while ((inputLine = in.readLine()) != null) {
 				response.append(inputLine);
 			}
@@ -71,7 +71,8 @@ public class Connection {
 	}
 	
 	public void action(String action) throws Exception {
-			 
+
+		try{
 			String url = baseUrl+keys[2]+"/action";
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -89,9 +90,6 @@ public class Connection {
 			wr.close();
 	 
 			int responseCode = con.getResponseCode();
-			System.out.println("\nSending 'POST' request to URL : " + url);
-			System.out.println("Post parameters : " + action);
-			System.out.println("Response Code : " + responseCode);
 	 
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getInputStream()));
@@ -102,9 +100,8 @@ public class Connection {
 				response.append(inputLine);
 			}
 			in.close();
-	 
-			//print result
-			System.out.println(response.toString());
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
-	
 }
