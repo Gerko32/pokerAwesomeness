@@ -18,7 +18,15 @@ public class Main {
 				Response r=a.get();
 				if(r.isYourTurn())
 				{
-					a.action(new Action("raise",0));
+					int value=CardCombinations.GetActualValue(r.getHand(),r.getCommunityCards());
+					if(value==0){
+						if(r.getCallAmount()>20){
+							a.action(new Action("fold",0));
+						}else{
+							a.action(new Action("raise",0));
+						}
+					}else
+						a.action(new Action("raise",value));
 				}
 				Thread.sleep(1000);
 			} catch (Exception e) {
