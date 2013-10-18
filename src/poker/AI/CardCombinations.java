@@ -19,9 +19,7 @@ public class CardCombinations {
 			if (i.intValue() / 2 > maxCount) {
 				maxCount = i.intValue() / 2;
 			}
-		}
-		return maxCount * 2;
-
+		}		return maxCount * 2;
 	}
 
 	private class Card {
