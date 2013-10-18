@@ -1,6 +1,6 @@
 package poker.AI.valueobjects;
 
-public class PlayersAtTable extends Response {
+public class PlayersAtTable {
 	private String player_name;
 	private int initial_stack;
 	private int current_bet;
