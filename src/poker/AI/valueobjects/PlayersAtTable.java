@@ -12,11 +12,11 @@ public class PlayersAtTable extends Response {
 		return player_name;
 	}
 
-	public int getInitial_stack() {
+	public int getInitialStack() {
 		return initial_stack;
 	}
 
-	public int getCurrent_bet() {
+	public int getCurrentBet() {
 		return current_bet;
 	}
 
@@ -31,5 +31,4 @@ public class PlayersAtTable extends Response {
 	public Action[] getActions() {
 		return actions;
 	}
-
 }
