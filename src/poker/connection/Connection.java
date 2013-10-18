@@ -12,7 +12,7 @@ import poker.AI.valueobjects.Action;
 import poker.AI.valueobjects.Response;
 
 public class Connection {
-	private static final String baseUrl="http://nolimitcodeem.com/api/players/72eca75b-11b3-4d26-a225-8e3ec5cef053/";
+	private static final String baseUrl="http://nolimitcodeem.com/api/players/4f87a606-4028-41c4-8cad-68decc22818d/";
 	
 	private JSONParser parser;
 	
@@ -63,6 +63,7 @@ public class Connection {
 			// Send post request
 			con.setDoOutput(true);
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			System.out.println("Action = " + action.getAction() + " Amount = " + action.getAmount());
 			wr.writeBytes("action_name="+action.getAction());
 			if(!action.getAction().equals("fold")){
 				wr.writeBytes("&amount="+action.getAmount());
