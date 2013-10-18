@@ -12,6 +12,8 @@ public class Pair3Awesome extends Strategy {
 		if(CardCombinations.quantityOfPairs(r)==2&&r.getCallAmount()/getAdjustedStack(r)<0.3)
 		{
 			return new Action("raise",(int)Math.round(getAdjustedStack(r)*0.075));
+		}else if(CardCombinations.qtySameColor(r)==5&&r.getCallAmount()/getAdjustedStack(r)<0.9){
+			return new Action("raise",(int)Math.round(getAdjustedStack(r)*0.15));
 		}
 		else if(r.getCommunityCards().length==0&&CardCombinations.isPairOrMore(r)==1){
 			return new Action("raise",(int)(r.getStack()*0.01));
