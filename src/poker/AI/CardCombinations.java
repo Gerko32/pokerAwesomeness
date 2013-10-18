@@ -20,6 +20,7 @@ public class CardCombinations {
 		for(Character key : cards.keySet()){
 			//if(cards.get)
 		}
+		return 0;
 	}
 	
 	private class Card{

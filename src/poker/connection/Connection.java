@@ -12,7 +12,7 @@ import poker.AI.valueobjects.Action;
 import poker.AI.valueobjects.Response;
 
 public class Connection {
-	private static final String baseUrl="http://nolimitcodeem.com/api/players/ee15f9d5-713d-4fb9-aa5b-dd776a437d9d/";
+	private static final String baseUrl="http://nolimitcodeem.com/api/players/72eca75b-11b3-4d26-a225-8e3ec5cef053/";
 	
 	private JSONParser parser;
 	
