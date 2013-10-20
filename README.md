@@ -1,4 +1,4 @@
 pokerAwesomeness
 ================
 
-Awesome^2 poker AI made at enova hackathon.
+Awesome^2 Texas Hold'em AI made at enova hackathon.
